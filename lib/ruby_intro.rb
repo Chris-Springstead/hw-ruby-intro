@@ -52,10 +52,40 @@ end
 
 def binary_multiple_of_4? s
   # YOUR CODE HERE
+  if s.empty?
+    return false
+  end
+  
+  s.each_char do |i|
+    if (i =~ /[[:alpha:]]/)
+      return false
+    end
+  end
+  
+  if s.to_i(2) % 4 == 0
+    return true
+  end
+  
+  return false
 end
 
 # Part 3
 
 class BookInStock
 # YOUR CODE HERE
+  attr_accessor :isbn, :price
+
+  def initialize(isbn, price)
+    @isbn = isbn
+    @price = price
+    
+    if @isbn.empty? || @price <= 0
+      raise ArgumentError 
+    end
+  end
+  
+  def price_as_string
+    sprintf("$%.2f", @price)
+  end
+
 end
